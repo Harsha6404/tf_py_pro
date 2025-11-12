@@ -10,6 +10,13 @@ resource "aws_security_group" "database_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]  # open for testing, restrict in production
   }
+ ingress {
+    description = "Allow MySQL traffic"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "ssh"
+    cidr_blocks = ["0.0.0.0/0"]  # open for testing, restrict in production
+  }
 
   egress {
     from_port   = 0
